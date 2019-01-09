@@ -8,7 +8,6 @@ import traceback
 
 from .source_handler import CandumpHandler, InvalidFrame, SerialHandler
 
-
 should_redraw = threading.Event()
 stop_reading = threading.Event()
 
@@ -16,7 +15,6 @@ can_messages = {}
 can_messages_lock = threading.Lock()
 
 thread_exception = None
-
 
 def reading_loop(source_handler, blacklist):
     """Background thread for reading."""
@@ -119,7 +117,7 @@ def main(stdscr, reading_thread):
                 win.addstr(1, bytes_column_start + i * column_width, 'Bytes')
                 win.addstr(1, text_column_start + i * column_width, 'Text')
 
-            win.addstr(3, id_column_start, "Press 'q' to quit")
+            win.addstr(3, id_column_start, "Beta By Justin Greer - Press 'q' to quit")
 
             row = row_start + 2  # The first column starts a bit lower to make space for the 'press q to quit message'
             current_column = 0
@@ -135,7 +133,7 @@ def main(stdscr, reading_thread):
 
                     # print frame ID in decimal and hex
                     win.addstr(row, id_column_start + current_column * column_width, '%s' % str(frame_id).ljust(5))
-                    win.addstr(row, id_column_start + 5 + current_column * column_width, '%X'.ljust(5) % frame_id)
+                    #win.addstr(row, id_column_start + 5 + current_column * column_width, '%X'.ljust(5) % frame_id)
 
                     # print frame bytes
                     win.addstr(row, bytes_column_start + current_column * column_width, msg_bytes.ljust(23))

@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
+
 from binascii import unhexlify
+
 import re
-
 import serial
-
 import time
 
 
